@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fuyin.boot.mgb.mapper.DebtCashFlowMapper">
+  <resultMap id="BaseResultMap" type="com.fuyin.boot.mgb.entity.DebtCashFlowDO">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="detail_url" jdbcType="VARCHAR" property="detailUrl" />
+    <result column="date" jdbcType="TIMESTAMP" property="date" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="cash_sales_ratio" jdbcType="DOUBLE" property="cashSalesRatio" />
+    <result column="cash_to_maturity_ratio" jdbcType="DOUBLE" property="cashToMaturityRatio" />
+    <result column="cash_flow_liability_ratio" jdbcType="DOUBLE" property="cashFlowLiabilityRatio" />
+    <result column="net_profit_cash_flow_ratio" jdbcType="DOUBLE" property="netProfitCashFlowRatio" />
+    <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+    <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, detail_url, date, code, name, cash_sales_ratio, cash_to_maturity_ratio, cash_flow_liability_ratio, 
+    net_profit_cash_flow_ratio, gmt_create, gmt_modified
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from debt_cash_flow
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from debt_cash_flow
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.fuyin.boot.mgb.entity.DebtCashFlowDO">
+    insert into debt_cash_flow (id, detail_url, date, 
+      code, name, cash_sales_ratio, 
+      cash_to_maturity_ratio, cash_flow_liability_ratio, 
+      net_profit_cash_flow_ratio, gmt_create, gmt_modified
+      )
+    values (#{id,jdbcType=BIGINT}, #{detailUrl,jdbcType=VARCHAR}, #{date,jdbcType=TIMESTAMP}, 
+      #{code,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{cashSalesRatio,jdbcType=DOUBLE}, 
+      #{cashToMaturityRatio,jdbcType=DOUBLE}, #{cashFlowLiabilityRatio,jdbcType=DOUBLE}, 
+      #{netProfitCashFlowRatio,jdbcType=DOUBLE}, #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.fuyin.boot.mgb.entity.DebtCashFlowDO">
+    insert into debt_cash_flow
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="detailUrl != null">
+        detail_url,
+      </if>
+      <if test="date != null">
+        date,
+      </if>
+      <if test="code != null">
+        code,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="cashSalesRatio != null">
+        cash_sales_ratio,
+      </if>
+      <if test="cashToMaturityRatio != null">
+        cash_to_maturity_ratio,
+      </if>
+      <if test="cashFlowLiabilityRatio != null">
+        cash_flow_liability_ratio,
+      </if>
+      <if test="netProfitCashFlowRatio != null">
+        net_profit_cash_flow_ratio,
+      </if>
+      <if test="gmtCreate != null">
+        gmt_create,
+      </if>
+      <if test="gmtModified != null">
+        gmt_modified,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="detailUrl != null">
+        #{detailUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="date != null">
+        #{date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="cashSalesRatio != null">
+        #{cashSalesRatio,jdbcType=DOUBLE},
+      </if>
+      <if test="cashToMaturityRatio != null">
+        #{cashToMaturityRatio,jdbcType=DOUBLE},
+      </if>
+      <if test="cashFlowLiabilityRatio != null">
+        #{cashFlowLiabilityRatio,jdbcType=DOUBLE},
+      </if>
+      <if test="netProfitCashFlowRatio != null">
+        #{netProfitCashFlowRatio,jdbcType=DOUBLE},
+      </if>
+      <if test="gmtCreate != null">
+        #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null">
+        #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fuyin.boot.mgb.entity.DebtCashFlowDO">
+    update debt_cash_flow
+    <set>
+      <if test="detailUrl != null">
+        detail_url = #{detailUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="date != null">
+        date = #{date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="code != null">
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="cashSalesRatio != null">
+        cash_sales_ratio = #{cashSalesRatio,jdbcType=DOUBLE},
+      </if>
+      <if test="cashToMaturityRatio != null">
+        cash_to_maturity_ratio = #{cashToMaturityRatio,jdbcType=DOUBLE},
+      </if>
+      <if test="cashFlowLiabilityRatio != null">
+        cash_flow_liability_ratio = #{cashFlowLiabilityRatio,jdbcType=DOUBLE},
+      </if>
+      <if test="netProfitCashFlowRatio != null">
+        net_profit_cash_flow_ratio = #{netProfitCashFlowRatio,jdbcType=DOUBLE},
+      </if>
+      <if test="gmtCreate != null">
+        gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null">
+        gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fuyin.boot.mgb.entity.DebtCashFlowDO">
+    update debt_cash_flow
+    set detail_url = #{detailUrl,jdbcType=VARCHAR},
+      date = #{date,jdbcType=TIMESTAMP},
+      code = #{code,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      cash_sales_ratio = #{cashSalesRatio,jdbcType=DOUBLE},
+      cash_to_maturity_ratio = #{cashToMaturityRatio,jdbcType=DOUBLE},
+      cash_flow_liability_ratio = #{cashFlowLiabilityRatio,jdbcType=DOUBLE},
+      net_profit_cash_flow_ratio = #{netProfitCashFlowRatio,jdbcType=DOUBLE},
+      gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      gmt_modified = #{gmtModified,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

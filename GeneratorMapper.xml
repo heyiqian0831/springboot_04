@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+
+    <!--指定mysql数据库连接信息在那个项目哪个文件-->
+    <properties resource="generator.properties"/>
+
+    <!-- 指定连接数据库的 JDBC 驱动包所在位置，指定到你本机的完整路径 -->
+    <classPathEntry location="E:\RJ_Maven\apache-maven-3.6.3\repo\mysql\mysql-connector-java\8.0.21\mysql-connector-java-8.0.21.jar"/>
+
+    <!-- 配置 table 表信息内容体，targetRuntime 指定采用 MyBatis3 的版本 -->
+    <context id="tables" targetRuntime="MyBatis3">
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
+        <property name="javaFileEncoding" value="UTF-8"/>
+
+        <!-- 为模型生成序列化方法-->
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+        <!-- 为生成的Java模型创建一个toString方法 -->
+        <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>
+
+        <!-- 抑制生成注释，由于生成的注释都是英文的，可以不让它生成 -->
+        <commentGenerator>
+            <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
+            <property name="suppressAllComments" value="true"/>
+            <property name="suppressDate" value="true"/>
+            <property name="addRemarkComments" value="true"/>
+        </commentGenerator>
+
+        <!-- 配置数据库连接信息 -->
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/fuyin?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false&amp;nullCatalogMeansCurrent=true&amp;serverTimezone=GMT%2B8"
+                        userId="root"
+                        password="333">
+            <!--解决mysql驱动升级到8.0后不生成指定数据库代码的问题-->
+            <property name="nullCatalogMeansCurrent" value="true" />
+        </jdbcConnection>
+
+        <!-- 生成 model 类，targetPackage 指定 model 类的包名， targetProject 指定
+        生成的 model 放在 idea 的哪个工程下面-->
+        <javaModelGenerator targetPackage="com.fuyin.boot.mgb.entity"
+                            targetProject="src/main/java">
+            <property name="enableSubPackages" value="false"/>
+            <property name="trimStrings" value="false"/>
+        </javaModelGenerator>
+
+        <!-- 生成 MyBatis 的 Mapper.xml 文件，targetPackage 指定 mapper.xml 文件的
+        包名， targetProject 指定生成的 mapper.xml 放在 idea 的哪个工程下面 -->
+        <sqlMapGenerator targetPackage="com.fuyin.boot.mgb.mapper"
+                         targetProject="src/main/resources">
+            <property name="enableSubPackages" value="false"/>
+        </sqlMapGenerator>
+
+        <!-- 生成 MyBatis 的 Mapper 接口类文件,targetPackage 指定 Mapper 接口类的包
+        名， targetProject 指定生成的 Mapper 接口放在 idea 的哪个工程下面 -->
+        <javaClientGenerator type="XMLMAPPER"
+                             targetPackage="com.fuyin.boot.mgb.mapper"
+                             targetProject="src/main/java">
+            <property name="enableSubPackages" value="false"/>
+        </javaClientGenerator>
+
+        <!-- 数据库表名及对应的 Java 模型类名 -->
+<!--        用户表-->
+<!--        <table tableName="user" domainObjectName="UserDO" mapperName="UserMapper"-->
+<!--               enableCountByExample="false"-->
+<!--               enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false"-->
+<!--               enableSelectByExample="false"-->
+<!--               selectByExampleQueryId="false"/>-->
+<!--        用户角色表-->
+<!--        <table tableName="user_role_relation" domainObjectName="UserRoleRelationDO" mapperName="UserRoleRelationMapper"-->
+<!--               enableCountByExample="false"-->
+<!--               enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false"-->
+<!--               enableSelectByExample="false"-->
+<!--               selectByExampleQueryId="false"/>-->
+<!--        管理员表-->
+<!--        <table tableName="admin" domainObjectName="AdminDO" mapperName="AdminMapper"-->
+<!--               enableCountByExample="false"-->
+<!--               enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false"-->
+<!--               enableSelectByExample="false"-->
+<!--               selectByExampleQueryId="false"/>-->
+<!--        管理员角色表-->
+<!--        <table tableName="admin_role_relation" domainObjectName="AdminRoleRelationDO" mapperName="AdminRoleRelationMapper"&ndash;&gt;-->
+<!--               enableCountByExample="false"-->
+<!--               enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false"-->
+<!--               enableSelectByExample="false"-->
+<!--               selectByExampleQueryId="false"/>-->
+<!--        角色表-->
+<!--        <table tableName="role" domainObjectName="RoleDO" mapperName="RoleMapper"-->
+<!--               enableCountByExample="false"-->
+<!--               enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false"-->
+<!--               enableSelectByExample="false"-->
+<!--               selectByExampleQueryId="false"/>-->
+<!--        权限表-->
+<!--        <table tableName="resource" domainObjectName="ResourceDO" mapperName="ResourceMapper"-->
+<!--               enableCountByExample="false"-->
+<!--               enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false"-->
+<!--               enableSelectByExample="false"-->
+<!--               selectByExampleQueryId="false"/>-->
+<!--        角色权限表-->
+<!--        <table tableName="role_resource_relation" domainObjectName="RoleResourceRelationDO" mapperName="RoleResourceRelationMapper"-->
+<!--               enableCountByExample="false"-->
+<!--               enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false"-->
+<!--               enableSelectByExample="false"-->
+<!--               selectByExampleQueryId="false"/>-->
+<!--        债务重组爬取数据表-->
+<!--        <table tableName="debt_diagnosis" domainObjectName="DebtDiagnosisDO" mapperName="DebtDiagnosisMapper"-->
+<!--               enableCountByExample="false"-->
+<!--               enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false"-->
+<!--               enableSelectByExample="false"-->
+<!--               selectByExampleQueryId="false"/>-->
+<!--        负债能力表-->
+<!--        <table tableName="debt_capacity" domainObjectName="DebtCapacityDO" mapperName="DebtCapacityMapper"-->
+<!--               enableCountByExample="false"-->
+<!--               enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false"-->
+<!--               enableSelectByExample="false"-->
+<!--               selectByExampleQueryId="false"/>-->
+<!--        盈利能力表-->
+<!--        <table tableName="debt_profitability" domainObjectName="DebtProfitabilityDO" mapperName="DebtProfitabilityMapper"-->
+<!--               enableCountByExample="false"-->
+<!--               enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false"-->
+<!--               enableSelectByExample="false"-->
+<!--               selectByExampleQueryId="false"/>-->
+<!--        现金流量表-->
+<!--        <table tableName="debt_cash_flow" domainObjectName="DebtCashFlowDO" mapperName="DebtCashFlowMapper"-->
+<!--               enableCountByExample="false"-->
+<!--               enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false"-->
+<!--               enableSelectByExample="false"-->
+<!--               selectByExampleQueryId="false"/>-->
+<!--        目标企业详情页基本信息表-->
+<!--        <table tableName="detail_url" domainObjectName="DetailUrlDO" mapperName="DetailUrlMapper"-->
+<!--               enableCountByExample="false"-->
+<!--               enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false"-->
+<!--               enableSelectByExample="false"-->
+<!--               selectByExampleQueryId="false"/>-->
+<!--        业务重组成长性分析表-->
+<!--        <table tableName="business_growth" domainObjectName="BusinessGrowthDO" mapperName="BusinessGrowthMapper"-->
+<!--               enableCountByExample="false"-->
+<!--               enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false"-->
+<!--               enableSelectByExample="false"-->
+<!--               selectByExampleQueryId="false"/>-->
+<!--        业务重组估值比较表-->
+<!--        <table tableName="business_valuation" domainObjectName="BusinessValuationDO" mapperName="BusinessValuationMapper"-->
+<!--               enableCountByExample="false"-->
+<!--               enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false"-->
+<!--               enableSelectByExample="false"-->
+<!--               selectByExampleQueryId="false"/>-->
+<!--        业务重组杜邦分析表-->
+<!--        <table tableName="business_dupont" domainObjectName="BusinessDupontDO" mapperName="BusinessDupontMapper"-->
+<!--               enableCountByExample="false"-->
+<!--               enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false"-->
+<!--               enableSelectByExample="false"-->
+<!--               selectByExampleQueryId="false"/>-->
+<!--        经营能力分析表-->
+<!--        <table tableName="operation_ability" domainObjectName="OperationAbilityDO" mapperName="OperationAbilityMapper"-->
+<!--               enableCountByExample="false"-->
+<!--               enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false"-->
+<!--               enableSelectByExample="false"-->
+<!--               selectByExampleQueryId="false"/>-->
+<!--        债务_负债能力诊断指标表-->
+<!--        <table tableName="capacity_indicators" domainObjectName="CapacityIndicatorsDO" mapperName="CapacityIndicatorsMapper"-->
+<!--               enableCountByExample="false"-->
+<!--               enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false"-->
+<!--               enableSelectByExample="false"-->
+<!--               selectByExampleQueryId="false"/>-->
+<!--&lt;!&ndash;        债务_盈利能力诊断指标表&ndash;&gt;-->
+<!--        <table tableName="profitability_indicators" domainObjectName="ProfitabilityIndicatorsDO" mapperName="ProfitabilityIndicatorsMapper"-->
+<!--               enableCountByExample="false"-->
+<!--               enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false"-->
+<!--               enableSelectByExample="false"-->
+<!--               selectByExampleQueryId="false"/>-->
+<!--&lt;!&ndash;        债务_现金流诊断指标表&ndash;&gt;-->
+<!--        <table tableName="cash_flow_indicators" domainObjectName="CashFlowIndicatorsDO" mapperName="CashFlowIndicatorsMapper"-->
+<!--               enableCountByExample="false"-->
+<!--               enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false"-->
+<!--               enableSelectByExample="false"-->
+<!--               selectByExampleQueryId="false"/>-->
+<!--&lt;!&ndash;        业务_需求状况指标表&ndash;&gt;-->
+<!--        <table tableName="demand_status_indicators" domainObjectName="DemandStatusIndicatorsDO" mapperName="DemandStatusIndicatorsMapper"-->
+<!--               enableCountByExample="false"-->
+<!--               enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false"-->
+<!--               enableSelectByExample="false"-->
+<!--               selectByExampleQueryId="false"/>-->
+<!--&lt;!&ndash;        业务_供应状况指标表&ndash;&gt;-->
+<!--        <table tableName="availability_indicators" domainObjectName="AvailabilityIndicatorsDO" mapperName="AvailabilityIndicatorsMapper"-->
+<!--               enableCountByExample="false"-->
+<!--               enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false"-->
+<!--               enableSelectByExample="false"-->
+<!--               selectByExampleQueryId="false"/>-->
+<!--&lt;!&ndash;        业务_团队稳定性指标表&ndash;&gt;-->
+<!--        <table tableName="team_stability_indicators" domainObjectName="TeamStabilityIndicatorsDO" mapperName="TeamStabilityIndicatorsMapper"-->
+<!--               enableCountByExample="false"-->
+<!--               enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false"-->
+<!--               enableSelectByExample="false"-->
+<!--               selectByExampleQueryId="false"/>-->
+<!--&lt;!&ndash;        业务诊断描述设置表&ndash;&gt;-->
+<!--        <table tableName="business_diagnosis_desc" domainObjectName="BusinessDiagnosisDescDO" mapperName="BusinessDiagnosisDescMapper"-->
+<!--               enableCountByExample="false"-->
+<!--               enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false"-->
+<!--               enableSelectByExample="false"-->
+<!--               selectByExampleQueryId="false"/>-->
+<!--&lt;!&ndash;        业务_经营水平分析——成长性指标表&ndash;&gt;-->
+<!--        <table tableName="growth_indicators" domainObjectName="GrowthIndicatorsDO" mapperName="GrowthIndicatorsMapper"-->
+<!--               enableCountByExample="false"-->
+<!--               enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false"-->
+<!--               enableSelectByExample="false"-->
+<!--               selectByExampleQueryId="false"/>-->
+<!--&lt;!&ndash;        业务_经营水平分析——估值比较指标表&ndash;&gt;-->
+<!--        <table tableName="valuation_indicators" domainObjectName="ValuationIndicatorsDO" mapperName="ValuationIndicatorsMapper"-->
+<!--               enableCountByExample="false"-->
+<!--               enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false"-->
+<!--               enableSelectByExample="false"-->
+<!--               selectByExampleQueryId="false"/>-->
+<!--&lt;!&ndash;        业务_经营水平分析——杜邦指标表&ndash;&gt;-->
+<!--        <table tableName="dupont_indicators" domainObjectName="DupontIndicatorsDO" mapperName="DupontIndicatorsMapper"-->
+<!--               enableCountByExample="false"-->
+<!--               enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false"-->
+<!--               enableSelectByExample="false"-->
+<!--               selectByExampleQueryId="false"/>-->
+<!--&lt;!&ndash;        债务方案内容管理——以资产清偿债务指标表&ndash;&gt;-->
+<!--        <table tableName="assets_settle_debts" domainObjectName="AssetsSettleDebtsDO" mapperName="AssetsSettleDebtsMapper"-->
+<!--               enableCountByExample="false"-->
+<!--               enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false"-->
+<!--               enableSelectByExample="false"-->
+<!--               selectByExampleQueryId="false"/>-->
+<!--&lt;!&ndash;        债务方案内容管理——债务转资本内容指标表&ndash;&gt;-->
+<!--        <table tableName="debt_to_capital" domainObjectName="DebtToCapitalDO" mapperName="DebtToCapitalMapper"-->
+<!--               enableCountByExample="false"-->
+<!--               enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false"-->
+<!--               enableSelectByExample="false"-->
+<!--               selectByExampleQueryId="false"/>-->
+<!--&lt;!&ndash;        债务方案内容管理——修改其他债务条件指标表&ndash;&gt;-->
+<!--        <table tableName="modify_debt_conditions" domainObjectName="ModifyDebtConditionsDO" mapperName="ModifyDebtConditionsMapper"-->
+<!--               enableCountByExample="false"-->
+<!--               enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false"-->
+<!--               enableSelectByExample="false"-->
+<!--               selectByExampleQueryId="false"/>-->
+<!--&lt;!&ndash;        债务方案内容管理——债务三种方式组合指标表&ndash;&gt;-->
+<!--        <table tableName="combination_three_debt" domainObjectName="CombinationThreeDebtDO" mapperName="CombinationThreeDebtMapper"-->
+<!--               enableCountByExample="false"-->
+<!--               enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false"-->
+<!--               enableSelectByExample="false"-->
+<!--               selectByExampleQueryId="false"/>-->
+<!--        业务方案内容管理指标表-->
+<!--        <table tableName="business_solution_content" domainObjectName="BusinessSolutionContentDO" mapperName="BusinessSolutionContentMapper"-->
+<!--               enableCountByExample="false"-->
+<!--               enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false"-->
+<!--               enableSelectByExample="false"-->
+<!--               selectByExampleQueryId="false"/>-->
+<!--        用户操作系统日志表-->
+<!--        <table tableName="system_log" domainObjectName="SystemLogDO" mapperName="SystemLogMapper"-->
+<!--               enableCountByExample="false"-->
+<!--               enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false"-->
+<!--               enableSelectByExample="false"-->
+<!--               selectByExampleQueryId="false"/>-->
+<!--        用户登录系统日志表-->
+<!--        <table tableName="login_log" domainObjectName="LoginLogDO" mapperName="LoginLogMapper"-->
+<!--               enableCountByExample="false"-->
+<!--               enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false"-->
+<!--               enableSelectByExample="false"-->
+<!--               selectByExampleQueryId="false"/>-->
+<!--        债务方案内容管理-->
+            <table tableName="debt_solution_content" domainObjectName="DebtSolutionContentDO" mapperName="DebtSolutionContentMapper"
+                enableCountByExample="false"
+                enableUpdateByExample="false"
+                enableDeleteByExample="false"
+                enableSelectByExample="false"
+                selectByExampleQueryId="false"/>
+    </context>
+</generatorConfiguration>

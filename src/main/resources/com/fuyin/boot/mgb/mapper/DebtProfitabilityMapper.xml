@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fuyin.boot.mgb.mapper.DebtProfitabilityMapper">
+  <resultMap id="BaseResultMap" type="com.fuyin.boot.mgb.entity.DebtProfitabilityDO">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="detail_url" jdbcType="VARCHAR" property="detailUrl" />
+    <result column="date" jdbcType="TIMESTAMP" property="date" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="gross_profit_ratio" jdbcType="DOUBLE" property="grossProfitRatio" />
+    <result column="net_interest_rate" jdbcType="DOUBLE" property="netInterestRate" />
+    <result column="roe" jdbcType="DOUBLE" property="roe" />
+    <result column="return_on_total_assets" jdbcType="DOUBLE" property="returnOnTotalAssets" />
+    <result column="return_on_invested_capital" jdbcType="DOUBLE" property="returnOnInvestedCapital" />
+    <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+    <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, detail_url, date, code, name, gross_profit_ratio, net_interest_rate, roe, return_on_total_assets, 
+    return_on_invested_capital, gmt_create, gmt_modified
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from debt_profitability
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from debt_profitability
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.fuyin.boot.mgb.entity.DebtProfitabilityDO">
+    insert into debt_profitability (id, detail_url, date, 
+      code, name, gross_profit_ratio, 
+      net_interest_rate, roe, return_on_total_assets, 
+      return_on_invested_capital, gmt_create, gmt_modified
+      )
+    values (#{id,jdbcType=BIGINT}, #{detailUrl,jdbcType=VARCHAR}, #{date,jdbcType=TIMESTAMP}, 
+      #{code,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{grossProfitRatio,jdbcType=DOUBLE}, 
+      #{netInterestRate,jdbcType=DOUBLE}, #{roe,jdbcType=DOUBLE}, #{returnOnTotalAssets,jdbcType=DOUBLE}, 
+      #{returnOnInvestedCapital,jdbcType=DOUBLE}, #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.fuyin.boot.mgb.entity.DebtProfitabilityDO">
+    insert into debt_profitability
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="detailUrl != null">
+        detail_url,
+      </if>
+      <if test="date != null">
+        date,
+      </if>
+      <if test="code != null">
+        code,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="grossProfitRatio != null">
+        gross_profit_ratio,
+      </if>
+      <if test="netInterestRate != null">
+        net_interest_rate,
+      </if>
+      <if test="roe != null">
+        roe,
+      </if>
+      <if test="returnOnTotalAssets != null">
+        return_on_total_assets,
+      </if>
+      <if test="returnOnInvestedCapital != null">
+        return_on_invested_capital,
+      </if>
+      <if test="gmtCreate != null">
+        gmt_create,
+      </if>
+      <if test="gmtModified != null">
+        gmt_modified,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="detailUrl != null">
+        #{detailUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="date != null">
+        #{date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="grossProfitRatio != null">
+        #{grossProfitRatio,jdbcType=DOUBLE},
+      </if>
+      <if test="netInterestRate != null">
+        #{netInterestRate,jdbcType=DOUBLE},
+      </if>
+      <if test="roe != null">
+        #{roe,jdbcType=DOUBLE},
+      </if>
+      <if test="returnOnTotalAssets != null">
+        #{returnOnTotalAssets,jdbcType=DOUBLE},
+      </if>
+      <if test="returnOnInvestedCapital != null">
+        #{returnOnInvestedCapital,jdbcType=DOUBLE},
+      </if>
+      <if test="gmtCreate != null">
+        #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null">
+        #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fuyin.boot.mgb.entity.DebtProfitabilityDO">
+    update debt_profitability
+    <set>
+      <if test="detailUrl != null">
+        detail_url = #{detailUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="date != null">
+        date = #{date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="code != null">
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="grossProfitRatio != null">
+        gross_profit_ratio = #{grossProfitRatio,jdbcType=DOUBLE},
+      </if>
+      <if test="netInterestRate != null">
+        net_interest_rate = #{netInterestRate,jdbcType=DOUBLE},
+      </if>
+      <if test="roe != null">
+        roe = #{roe,jdbcType=DOUBLE},
+      </if>
+      <if test="returnOnTotalAssets != null">
+        return_on_total_assets = #{returnOnTotalAssets,jdbcType=DOUBLE},
+      </if>
+      <if test="returnOnInvestedCapital != null">
+        return_on_invested_capital = #{returnOnInvestedCapital,jdbcType=DOUBLE},
+      </if>
+      <if test="gmtCreate != null">
+        gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null">
+        gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fuyin.boot.mgb.entity.DebtProfitabilityDO">
+    update debt_profitability
+    set detail_url = #{detailUrl,jdbcType=VARCHAR},
+      date = #{date,jdbcType=TIMESTAMP},
+      code = #{code,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      gross_profit_ratio = #{grossProfitRatio,jdbcType=DOUBLE},
+      net_interest_rate = #{netInterestRate,jdbcType=DOUBLE},
+      roe = #{roe,jdbcType=DOUBLE},
+      return_on_total_assets = #{returnOnTotalAssets,jdbcType=DOUBLE},
+      return_on_invested_capital = #{returnOnInvestedCapital,jdbcType=DOUBLE},
+      gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      gmt_modified = #{gmtModified,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

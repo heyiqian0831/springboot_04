@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fuyin.boot.mgb.mapper.BusinessValuationMapper">
+  <resultMap id="BaseResultMap" type="com.fuyin.boot.mgb.entity.BusinessValuationDO">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="detail_url" jdbcType="VARCHAR" property="detailUrl" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="peg" jdbcType="DOUBLE" property="peg" />
+    <result column="price_earnings_a21" jdbcType="DOUBLE" property="priceEarningsA21" />
+    <result column="price_earnings_ttm" jdbcType="DOUBLE" property="priceEarningsTtm" />
+    <result column="price_earnings_e22" jdbcType="DOUBLE" property="priceEarningsE22" />
+    <result column="price_earnings_e23" jdbcType="DOUBLE" property="priceEarningsE23" />
+    <result column="price_earnings_e24" jdbcType="DOUBLE" property="priceEarningsE24" />
+    <result column="market_sales_a21" jdbcType="DOUBLE" property="marketSalesA21" />
+    <result column="market_sales_ttm" jdbcType="DOUBLE" property="marketSalesTtm" />
+    <result column="market_sales_e22" jdbcType="DOUBLE" property="marketSalesE22" />
+    <result column="market_sales_e23" jdbcType="DOUBLE" property="marketSalesE23" />
+    <result column="market_sales_e24" jdbcType="DOUBLE" property="marketSalesE24" />
+    <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+    <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, detail_url, code, name, peg, price_earnings_a21, price_earnings_ttm, price_earnings_e22, 
+    price_earnings_e23, price_earnings_e24, market_sales_a21, market_sales_ttm, market_sales_e22, 
+    market_sales_e23, market_sales_e24, gmt_create, gmt_modified
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from business_valuation
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from business_valuation
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.fuyin.boot.mgb.entity.BusinessValuationDO">
+    insert into business_valuation (id, detail_url, code, 
+      name, peg, price_earnings_a21, 
+      price_earnings_ttm, price_earnings_e22, price_earnings_e23, 
+      price_earnings_e24, market_sales_a21, market_sales_ttm, 
+      market_sales_e22, market_sales_e23, market_sales_e24, 
+      gmt_create, gmt_modified)
+    values (#{id,jdbcType=BIGINT}, #{detailUrl,jdbcType=VARCHAR}, #{code,jdbcType=VARCHAR}, 
+      #{name,jdbcType=VARCHAR}, #{peg,jdbcType=DOUBLE}, #{priceEarningsA21,jdbcType=DOUBLE}, 
+      #{priceEarningsTtm,jdbcType=DOUBLE}, #{priceEarningsE22,jdbcType=DOUBLE}, #{priceEarningsE23,jdbcType=DOUBLE}, 
+      #{priceEarningsE24,jdbcType=DOUBLE}, #{marketSalesA21,jdbcType=DOUBLE}, #{marketSalesTtm,jdbcType=DOUBLE}, 
+      #{marketSalesE22,jdbcType=DOUBLE}, #{marketSalesE23,jdbcType=DOUBLE}, #{marketSalesE24,jdbcType=DOUBLE}, 
+      #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.fuyin.boot.mgb.entity.BusinessValuationDO">
+    insert into business_valuation
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="detailUrl != null">
+        detail_url,
+      </if>
+      <if test="code != null">
+        code,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="peg != null">
+        peg,
+      </if>
+      <if test="priceEarningsA21 != null">
+        price_earnings_a21,
+      </if>
+      <if test="priceEarningsTtm != null">
+        price_earnings_ttm,
+      </if>
+      <if test="priceEarningsE22 != null">
+        price_earnings_e22,
+      </if>
+      <if test="priceEarningsE23 != null">
+        price_earnings_e23,
+      </if>
+      <if test="priceEarningsE24 != null">
+        price_earnings_e24,
+      </if>
+      <if test="marketSalesA21 != null">
+        market_sales_a21,
+      </if>
+      <if test="marketSalesTtm != null">
+        market_sales_ttm,
+      </if>
+      <if test="marketSalesE22 != null">
+        market_sales_e22,
+      </if>
+      <if test="marketSalesE23 != null">
+        market_sales_e23,
+      </if>
+      <if test="marketSalesE24 != null">
+        market_sales_e24,
+      </if>
+      <if test="gmtCreate != null">
+        gmt_create,
+      </if>
+      <if test="gmtModified != null">
+        gmt_modified,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="detailUrl != null">
+        #{detailUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="peg != null">
+        #{peg,jdbcType=DOUBLE},
+      </if>
+      <if test="priceEarningsA21 != null">
+        #{priceEarningsA21,jdbcType=DOUBLE},
+      </if>
+      <if test="priceEarningsTtm != null">
+        #{priceEarningsTtm,jdbcType=DOUBLE},
+      </if>
+      <if test="priceEarningsE22 != null">
+        #{priceEarningsE22,jdbcType=DOUBLE},
+      </if>
+      <if test="priceEarningsE23 != null">
+        #{priceEarningsE23,jdbcType=DOUBLE},
+      </if>
+      <if test="priceEarningsE24 != null">
+        #{priceEarningsE24,jdbcType=DOUBLE},
+      </if>
+      <if test="marketSalesA21 != null">
+        #{marketSalesA21,jdbcType=DOUBLE},
+      </if>
+      <if test="marketSalesTtm != null">
+        #{marketSalesTtm,jdbcType=DOUBLE},
+      </if>
+      <if test="marketSalesE22 != null">
+        #{marketSalesE22,jdbcType=DOUBLE},
+      </if>
+      <if test="marketSalesE23 != null">
+        #{marketSalesE23,jdbcType=DOUBLE},
+      </if>
+      <if test="marketSalesE24 != null">
+        #{marketSalesE24,jdbcType=DOUBLE},
+      </if>
+      <if test="gmtCreate != null">
+        #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null">
+        #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fuyin.boot.mgb.entity.BusinessValuationDO">
+    update business_valuation
+    <set>
+      <if test="detailUrl != null">
+        detail_url = #{detailUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="peg != null">
+        peg = #{peg,jdbcType=DOUBLE},
+      </if>
+      <if test="priceEarningsA21 != null">
+        price_earnings_a21 = #{priceEarningsA21,jdbcType=DOUBLE},
+      </if>
+      <if test="priceEarningsTtm != null">
+        price_earnings_ttm = #{priceEarningsTtm,jdbcType=DOUBLE},
+      </if>
+      <if test="priceEarningsE22 != null">
+        price_earnings_e22 = #{priceEarningsE22,jdbcType=DOUBLE},
+      </if>
+      <if test="priceEarningsE23 != null">
+        price_earnings_e23 = #{priceEarningsE23,jdbcType=DOUBLE},
+      </if>
+      <if test="priceEarningsE24 != null">
+        price_earnings_e24 = #{priceEarningsE24,jdbcType=DOUBLE},
+      </if>
+      <if test="marketSalesA21 != null">
+        market_sales_a21 = #{marketSalesA21,jdbcType=DOUBLE},
+      </if>
+      <if test="marketSalesTtm != null">
+        market_sales_ttm = #{marketSalesTtm,jdbcType=DOUBLE},
+      </if>
+      <if test="marketSalesE22 != null">
+        market_sales_e22 = #{marketSalesE22,jdbcType=DOUBLE},
+      </if>
+      <if test="marketSalesE23 != null">
+        market_sales_e23 = #{marketSalesE23,jdbcType=DOUBLE},
+      </if>
+      <if test="marketSalesE24 != null">
+        market_sales_e24 = #{marketSalesE24,jdbcType=DOUBLE},
+      </if>
+      <if test="gmtCreate != null">
+        gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null">
+        gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fuyin.boot.mgb.entity.BusinessValuationDO">
+    update business_valuation
+    set detail_url = #{detailUrl,jdbcType=VARCHAR},
+      code = #{code,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      peg = #{peg,jdbcType=DOUBLE},
+      price_earnings_a21 = #{priceEarningsA21,jdbcType=DOUBLE},
+      price_earnings_ttm = #{priceEarningsTtm,jdbcType=DOUBLE},
+      price_earnings_e22 = #{priceEarningsE22,jdbcType=DOUBLE},
+      price_earnings_e23 = #{priceEarningsE23,jdbcType=DOUBLE},
+      price_earnings_e24 = #{priceEarningsE24,jdbcType=DOUBLE},
+      market_sales_a21 = #{marketSalesA21,jdbcType=DOUBLE},
+      market_sales_ttm = #{marketSalesTtm,jdbcType=DOUBLE},
+      market_sales_e22 = #{marketSalesE22,jdbcType=DOUBLE},
+      market_sales_e23 = #{marketSalesE23,jdbcType=DOUBLE},
+      market_sales_e24 = #{marketSalesE24,jdbcType=DOUBLE},
+      gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      gmt_modified = #{gmtModified,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

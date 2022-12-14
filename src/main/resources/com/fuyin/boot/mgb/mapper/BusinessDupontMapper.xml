@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fuyin.boot.mgb.mapper.BusinessDupontMapper">
+  <resultMap id="BaseResultMap" type="com.fuyin.boot.mgb.entity.BusinessDupontDO">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="detail_url" jdbcType="VARCHAR" property="detailUrl" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="roe_year3" jdbcType="DOUBLE" property="roeYear3" />
+    <result column="roe_a19" jdbcType="DOUBLE" property="roeA19" />
+    <result column="roe_e20" jdbcType="DOUBLE" property="roeE20" />
+    <result column="roe_e21" jdbcType="DOUBLE" property="roeE21" />
+    <result column="net_interest_rate_year3" jdbcType="DOUBLE" property="netInterestRateYear3" />
+    <result column="net_interest_rate_a19" jdbcType="DOUBLE" property="netInterestRateA19" />
+    <result column="net_interest_rate_e20" jdbcType="DOUBLE" property="netInterestRateE20" />
+    <result column="net_interest_rate_e21" jdbcType="DOUBLE" property="netInterestRateE21" />
+    <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+    <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, detail_url, code, name, roe_year3, roe_a19, roe_e20, roe_e21, net_interest_rate_year3, 
+    net_interest_rate_a19, net_interest_rate_e20, net_interest_rate_e21, gmt_create, 
+    gmt_modified
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from business_dupont
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from business_dupont
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.fuyin.boot.mgb.entity.BusinessDupontDO">
+    insert into business_dupont (id, detail_url, code, 
+      name, roe_year3, roe_a19, 
+      roe_e20, roe_e21, net_interest_rate_year3, 
+      net_interest_rate_a19, net_interest_rate_e20, net_interest_rate_e21, 
+      gmt_create, gmt_modified)
+    values (#{id,jdbcType=BIGINT}, #{detailUrl,jdbcType=VARCHAR}, #{code,jdbcType=VARCHAR}, 
+      #{name,jdbcType=VARCHAR}, #{roeYear3,jdbcType=DOUBLE}, #{roeA19,jdbcType=DOUBLE}, 
+      #{roeE20,jdbcType=DOUBLE}, #{roeE21,jdbcType=DOUBLE}, #{netInterestRateYear3,jdbcType=DOUBLE}, 
+      #{netInterestRateA19,jdbcType=DOUBLE}, #{netInterestRateE20,jdbcType=DOUBLE}, #{netInterestRateE21,jdbcType=DOUBLE}, 
+      #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.fuyin.boot.mgb.entity.BusinessDupontDO">
+    insert into business_dupont
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="detailUrl != null">
+        detail_url,
+      </if>
+      <if test="code != null">
+        code,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="roeYear3 != null">
+        roe_year3,
+      </if>
+      <if test="roeA19 != null">
+        roe_a19,
+      </if>
+      <if test="roeE20 != null">
+        roe_e20,
+      </if>
+      <if test="roeE21 != null">
+        roe_e21,
+      </if>
+      <if test="netInterestRateYear3 != null">
+        net_interest_rate_year3,
+      </if>
+      <if test="netInterestRateA19 != null">
+        net_interest_rate_a19,
+      </if>
+      <if test="netInterestRateE20 != null">
+        net_interest_rate_e20,
+      </if>
+      <if test="netInterestRateE21 != null">
+        net_interest_rate_e21,
+      </if>
+      <if test="gmtCreate != null">
+        gmt_create,
+      </if>
+      <if test="gmtModified != null">
+        gmt_modified,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="detailUrl != null">
+        #{detailUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="roeYear3 != null">
+        #{roeYear3,jdbcType=DOUBLE},
+      </if>
+      <if test="roeA19 != null">
+        #{roeA19,jdbcType=DOUBLE},
+      </if>
+      <if test="roeE20 != null">
+        #{roeE20,jdbcType=DOUBLE},
+      </if>
+      <if test="roeE21 != null">
+        #{roeE21,jdbcType=DOUBLE},
+      </if>
+      <if test="netInterestRateYear3 != null">
+        #{netInterestRateYear3,jdbcType=DOUBLE},
+      </if>
+      <if test="netInterestRateA19 != null">
+        #{netInterestRateA19,jdbcType=DOUBLE},
+      </if>
+      <if test="netInterestRateE20 != null">
+        #{netInterestRateE20,jdbcType=DOUBLE},
+      </if>
+      <if test="netInterestRateE21 != null">
+        #{netInterestRateE21,jdbcType=DOUBLE},
+      </if>
+      <if test="gmtCreate != null">
+        #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null">
+        #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fuyin.boot.mgb.entity.BusinessDupontDO">
+    update business_dupont
+    <set>
+      <if test="detailUrl != null">
+        detail_url = #{detailUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="roeYear3 != null">
+        roe_year3 = #{roeYear3,jdbcType=DOUBLE},
+      </if>
+      <if test="roeA19 != null">
+        roe_a19 = #{roeA19,jdbcType=DOUBLE},
+      </if>
+      <if test="roeE20 != null">
+        roe_e20 = #{roeE20,jdbcType=DOUBLE},
+      </if>
+      <if test="roeE21 != null">
+        roe_e21 = #{roeE21,jdbcType=DOUBLE},
+      </if>
+      <if test="netInterestRateYear3 != null">
+        net_interest_rate_year3 = #{netInterestRateYear3,jdbcType=DOUBLE},
+      </if>
+      <if test="netInterestRateA19 != null">
+        net_interest_rate_a19 = #{netInterestRateA19,jdbcType=DOUBLE},
+      </if>
+      <if test="netInterestRateE20 != null">
+        net_interest_rate_e20 = #{netInterestRateE20,jdbcType=DOUBLE},
+      </if>
+      <if test="netInterestRateE21 != null">
+        net_interest_rate_e21 = #{netInterestRateE21,jdbcType=DOUBLE},
+      </if>
+      <if test="gmtCreate != null">
+        gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null">
+        gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fuyin.boot.mgb.entity.BusinessDupontDO">
+    update business_dupont
+    set detail_url = #{detailUrl,jdbcType=VARCHAR},
+      code = #{code,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      roe_year3 = #{roeYear3,jdbcType=DOUBLE},
+      roe_a19 = #{roeA19,jdbcType=DOUBLE},
+      roe_e20 = #{roeE20,jdbcType=DOUBLE},
+      roe_e21 = #{roeE21,jdbcType=DOUBLE},
+      net_interest_rate_year3 = #{netInterestRateYear3,jdbcType=DOUBLE},
+      net_interest_rate_a19 = #{netInterestRateA19,jdbcType=DOUBLE},
+      net_interest_rate_e20 = #{netInterestRateE20,jdbcType=DOUBLE},
+      net_interest_rate_e21 = #{netInterestRateE21,jdbcType=DOUBLE},
+      gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      gmt_modified = #{gmtModified,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

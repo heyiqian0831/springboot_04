@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fuyin.boot.mgb.mapper.OperationAbilityMapper">
+  <resultMap id="BaseResultMap" type="com.fuyin.boot.mgb.entity.OperationAbilityDO">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="requirement_analysis" jdbcType="VARCHAR" property="requirementAnalysis" />
+    <result column="ra_score" jdbcType="INTEGER" property="raScore" />
+    <result column="supply_analysis" jdbcType="VARCHAR" property="supplyAnalysis" />
+    <result column="sa_score" jdbcType="INTEGER" property="saScore" />
+    <result column="team_stability_analysis" jdbcType="VARCHAR" property="teamStabilityAnalysis" />
+    <result column="tsa_score" jdbcType="INTEGER" property="tsaScore" />
+    <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+    <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, requirement_analysis, ra_score, supply_analysis, sa_score, team_stability_analysis, 
+    tsa_score, gmt_create, gmt_modified
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from operation_ability
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from operation_ability
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.fuyin.boot.mgb.entity.OperationAbilityDO">
+    insert into operation_ability (id, requirement_analysis, ra_score, 
+      supply_analysis, sa_score, team_stability_analysis, 
+      tsa_score, gmt_create, gmt_modified
+      )
+    values (#{id,jdbcType=BIGINT}, #{requirementAnalysis,jdbcType=VARCHAR}, #{raScore,jdbcType=INTEGER}, 
+      #{supplyAnalysis,jdbcType=VARCHAR}, #{saScore,jdbcType=INTEGER}, #{teamStabilityAnalysis,jdbcType=VARCHAR}, 
+      #{tsaScore,jdbcType=INTEGER}, #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.fuyin.boot.mgb.entity.OperationAbilityDO">
+    insert into operation_ability
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="requirementAnalysis != null">
+        requirement_analysis,
+      </if>
+      <if test="raScore != null">
+        ra_score,
+      </if>
+      <if test="supplyAnalysis != null">
+        supply_analysis,
+      </if>
+      <if test="saScore != null">
+        sa_score,
+      </if>
+      <if test="teamStabilityAnalysis != null">
+        team_stability_analysis,
+      </if>
+      <if test="tsaScore != null">
+        tsa_score,
+      </if>
+      <if test="gmtCreate != null">
+        gmt_create,
+      </if>
+      <if test="gmtModified != null">
+        gmt_modified,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="requirementAnalysis != null">
+        #{requirementAnalysis,jdbcType=VARCHAR},
+      </if>
+      <if test="raScore != null">
+        #{raScore,jdbcType=INTEGER},
+      </if>
+      <if test="supplyAnalysis != null">
+        #{supplyAnalysis,jdbcType=VARCHAR},
+      </if>
+      <if test="saScore != null">
+        #{saScore,jdbcType=INTEGER},
+      </if>
+      <if test="teamStabilityAnalysis != null">
+        #{teamStabilityAnalysis,jdbcType=VARCHAR},
+      </if>
+      <if test="tsaScore != null">
+        #{tsaScore,jdbcType=INTEGER},
+      </if>
+      <if test="gmtCreate != null">
+        #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null">
+        #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fuyin.boot.mgb.entity.OperationAbilityDO">
+    update operation_ability
+    <set>
+      <if test="requirementAnalysis != null">
+        requirement_analysis = #{requirementAnalysis,jdbcType=VARCHAR},
+      </if>
+      <if test="raScore != null">
+        ra_score = #{raScore,jdbcType=INTEGER},
+      </if>
+      <if test="supplyAnalysis != null">
+        supply_analysis = #{supplyAnalysis,jdbcType=VARCHAR},
+      </if>
+      <if test="saScore != null">
+        sa_score = #{saScore,jdbcType=INTEGER},
+      </if>
+      <if test="teamStabilityAnalysis != null">
+        team_stability_analysis = #{teamStabilityAnalysis,jdbcType=VARCHAR},
+      </if>
+      <if test="tsaScore != null">
+        tsa_score = #{tsaScore,jdbcType=INTEGER},
+      </if>
+      <if test="gmtCreate != null">
+        gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null">
+        gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fuyin.boot.mgb.entity.OperationAbilityDO">
+    update operation_ability
+    set requirement_analysis = #{requirementAnalysis,jdbcType=VARCHAR},
+      ra_score = #{raScore,jdbcType=INTEGER},
+      supply_analysis = #{supplyAnalysis,jdbcType=VARCHAR},
+      sa_score = #{saScore,jdbcType=INTEGER},
+      team_stability_analysis = #{teamStabilityAnalysis,jdbcType=VARCHAR},
+      tsa_score = #{tsaScore,jdbcType=INTEGER},
+      gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      gmt_modified = #{gmtModified,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

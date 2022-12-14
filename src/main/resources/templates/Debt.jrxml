@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.18.1.final using JasperReports Library version 6.18.1-9d75d1969e774d4f179fb3be8401e98a0e6d1611  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Debt" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d250a5e5-717d-42ee-b63d-3946291ed390">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<subDataset name="Dataset1" uuid="91d9ef55-bf33-424a-abb4-0fa8c612693e">
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+		<queryString>
+			<![CDATA[]]>
+		</queryString>
+	</subDataset>
+	<parameter name="name" class="java.lang.String"/>
+	<parameter name="enterpriseCode" class="java.lang.String"/>
+	<parameter name="reason" class="java.lang.String"/>
+	<parameter name="type" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="97" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="85" height="25" uuid="07d5a450-f8cb-49d1-8d34-8ebf56fbb869">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="myfont" size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[重组企业名称:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="220" y="0" width="110" height="25" uuid="1d6eb214-fd60-487b-851f-f6eb672bd877">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="myfont" size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[企业社会信用代码:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="64" width="85" height="25" uuid="208f1480-5cc0-4405-83b0-daca820b517f">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="myfont" size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[债务重组方式:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="30" width="85" height="25" uuid="749c9ce6-16ca-408f-b7a9-8b362b88ee8b">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="myfont" size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[债务重组缘由:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="90" y="0" width="120" height="25" uuid="89b8dac0-e105-4505-a539-e412997c513a">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box topPadding="0" leftPadding="8">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="88" y="64" width="100" height="25" uuid="c1d8b66e-94b0-4043-81f2-e5ec6f40751d">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box leftPadding="8">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{type}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="335" y="0" width="218" height="25" uuid="aedb9328-8d65-4b10-b80f-12018ef4965b">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box leftPadding="8">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{enterpriseCode}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="88" y="30" width="466" height="25" uuid="735ac78d-e237-4781-97f7-56a22d46a418">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box leftPadding="8">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{reason}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="13" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="198" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="14" uuid="192116d4-dd20-44f3-aa50-faeb82c8bd99">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="myfont"/>
+				</textElement>
+				<text><![CDATA[负债能力分析：]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="40" width="100" height="14" uuid="08943cda-134e-4f93-a949-47b6b18709c4">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="myfont"/>
+				</textElement>
+				<text><![CDATA[盈利能力分析：]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="90" width="100" height="14" uuid="3ba06661-ee6f-4764-bde4-0d5649d412e8">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="myfont"/>
+				</textElement>
+				<text><![CDATA[现金流分析：]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="129" width="32" height="18" uuid="839eb5a3-fa99-4e9d-8eb9-c11da6f34503"/>
+				<textElement>
+					<font fontName="myfont"/>
+				</textElement>
+				<text><![CDATA[描述：]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="177" splitType="Stretch">
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="0" y="147" width="556" height="30" backcolor="#E6E8E9" uuid="524caab4-87f7-4596-966e-dcd4ba7e66cf"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Serif" size="9" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[THANKYOU FOR YOUR BUSINESS]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+</jasperReport>

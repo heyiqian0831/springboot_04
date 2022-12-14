@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fuyin.boot.mgb.mapper.ResourceMapper">
+  <resultMap id="BaseResultMap" type="com.fuyin.boot.mgb.entity.ResourceDO">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="url_regex" jdbcType="VARCHAR" property="urlRegex" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+    <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, name, url_regex, description, gmt_create, gmt_modified
+  </sql>
+<!--  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">-->
+<!--    select-->
+<!--    <include refid="Base_Column_List" />-->
+<!--    from resource-->
+<!--    where id = #{id,jdbcType=BIGINT}-->
+<!--  </select>-->
+    <select id="selectNameByUserPrimaryKey" resultType="java.lang.String">
+      SELECT
+        DISTINCT  re.`name`
+      FROM
+        user_role_relation urr
+          LEFT JOIN
+        role r
+        ON
+          urr.role_id = r.id
+          LEFT JOIN
+        role_resource_relation rrr
+        ON
+          r.id = rrr.role_id
+          LEFT JOIN
+        resource re
+        ON rrr.resource_id = re.id
+      WHERE
+        urr.user_id = #{id};
+    </select>
+  <select id="selectNameByAdminPrimaryKey" resultType="java.lang.String">
+    SELECT
+      DISTINCT  re.`name`
+    FROM
+      admin_role_relation arr
+        LEFT JOIN
+      role r
+      ON
+        arr.role_id = r.id
+        LEFT JOIN
+      role_resource_relation rrr
+      ON
+        r.id = rrr.role_id
+        LEFT JOIN
+      resource re
+      ON
+        rrr.resource_id = re.id
+    WHERE
+      arr.admin_id = #{id};
+  </select>
+
+<resultMap id="roleAndResource" type="com.fuyin.boot.model.domain.RoleResource">
+  <id property="resourceId" column="resid"/>
+
+  <result property="roleDelFlag" column="del_flag"/>
+  <result property="resourceDesc" column="resdesc"/>
+</resultMap>
+
+  <select id="getResourceByRoleId" resultMap="roleAndResource">
+    SELECT
+      DISTINCT
+      r.del_flag,re.id resid,re.description resdesc
+    FROM
+      role r
+        LEFT JOIN
+      role_resource_relation rrr
+      ON
+        r.id = rrr.role_id
+        LEFT JOIN
+      resource re
+      ON
+        rrr.resource_id = re.id
+    WHERE
+      r.id = #{id};
+  </select>
+  <!--    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">-->
+<!--    delete from resource-->
+<!--    where id = #{id,jdbcType=BIGINT}-->
+<!--  </delete>-->
+<!--  <insert id="insert" parameterType="com.fuyin.boot.mgb.entity.ResourceDO">-->
+<!--    insert into resource (id, name, url_regex,-->
+<!--      description, gmt_create, gmt_modified-->
+<!--      )-->
+<!--    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{urlRegex,jdbcType=VARCHAR},-->
+<!--      #{description,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP}-->
+<!--      )-->
+<!--  </insert>-->
+<!--  <insert id="insertSelective" parameterType="com.fuyin.boot.mgb.entity.ResourceDO">-->
+<!--    insert into resource-->
+<!--    <trim prefix="(" suffix=")" suffixOverrides=",">-->
+<!--      <if test="id != null">-->
+<!--        id,-->
+<!--      </if>-->
+<!--      <if test="name != null">-->
+<!--        name,-->
+<!--      </if>-->
+<!--      <if test="urlRegex != null">-->
+<!--        url_regex,-->
+<!--      </if>-->
+<!--      <if test="description != null">-->
+<!--        description,-->
+<!--      </if>-->
+<!--      <if test="gmtCreate != null">-->
+<!--        gmt_create,-->
+<!--      </if>-->
+<!--      <if test="gmtModified != null">-->
+<!--        gmt_modified,-->
+<!--      </if>-->
+<!--    </trim>-->
+<!--    <trim prefix="values (" suffix=")" suffixOverrides=",">-->
+<!--      <if test="id != null">-->
+<!--        #{id,jdbcType=BIGINT},-->
+<!--      </if>-->
+<!--      <if test="name != null">-->
+<!--        #{name,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="urlRegex != null">-->
+<!--        #{urlRegex,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="description != null">-->
+<!--        #{description,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="gmtCreate != null">-->
+<!--        #{gmtCreate,jdbcType=TIMESTAMP},-->
+<!--      </if>-->
+<!--      <if test="gmtModified != null">-->
+<!--        #{gmtModified,jdbcType=TIMESTAMP},-->
+<!--      </if>-->
+<!--    </trim>-->
+<!--  </insert>-->
+<!--  <update id="updateByPrimaryKeySelective" parameterType="com.fuyin.boot.mgb.entity.ResourceDO">-->
+<!--    update resource-->
+<!--    <set>-->
+<!--      <if test="name != null">-->
+<!--        name = #{name,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="urlRegex != null">-->
+<!--        url_regex = #{urlRegex,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="description != null">-->
+<!--        description = #{description,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="gmtCreate != null">-->
+<!--        gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},-->
+<!--      </if>-->
+<!--      <if test="gmtModified != null">-->
+<!--        gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},-->
+<!--      </if>-->
+<!--    </set>-->
+<!--    where id = #{id,jdbcType=BIGINT}-->
+<!--  </update>-->
+<!--  <update id="updateByPrimaryKey" parameterType="com.fuyin.boot.mgb.entity.ResourceDO">-->
+<!--    update resource-->
+<!--    set name = #{name,jdbcType=VARCHAR},-->
+<!--      url_regex = #{urlRegex,jdbcType=VARCHAR},-->
+<!--      description = #{description,jdbcType=VARCHAR},-->
+<!--      gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},-->
+<!--      gmt_modified = #{gmtModified,jdbcType=TIMESTAMP}-->
+<!--    where id = #{id,jdbcType=BIGINT}-->
+<!--  </update>-->
+</mapper>

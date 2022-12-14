@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fuyin.boot.mgb.mapper.BusinessGrowthMapper">
+  <resultMap id="BaseResultMap" type="com.fuyin.boot.mgb.entity.BusinessGrowthDO">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="detail_url" jdbcType="VARCHAR" property="detailUrl" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="basic_eps_year3" jdbcType="DOUBLE" property="basicEpsYear3" />
+    <result column="basic_eps_a21" jdbcType="DOUBLE" property="basicEpsA21" />
+    <result column="basic_eps_ttm" jdbcType="DOUBLE" property="basicEpsTtm" />
+    <result column="basic_eps_e22" jdbcType="DOUBLE" property="basicEpsE22" />
+    <result column="basic_eps_e23" jdbcType="DOUBLE" property="basicEpsE23" />
+    <result column="basic_eps_e24" jdbcType="DOUBLE" property="basicEpsE24" />
+    <result column="operating_income_year3" jdbcType="DOUBLE" property="operatingIncomeYear3" />
+    <result column="operating_income_a21" jdbcType="DOUBLE" property="operatingIncomeA21" />
+    <result column="operating_income_ttm" jdbcType="DOUBLE" property="operatingIncomeTtm" />
+    <result column="operating_income_e22" jdbcType="DOUBLE" property="operatingIncomeE22" />
+    <result column="operating_income_e23" jdbcType="DOUBLE" property="operatingIncomeE23" />
+    <result column="operating_income_e24" jdbcType="DOUBLE" property="operatingIncomeE24" />
+    <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+    <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, detail_url, code, name, basic_eps_year3, basic_eps_a21, basic_eps_ttm, basic_eps_e22, 
+    basic_eps_e23, basic_eps_e24, operating_income_year3, operating_income_a21, operating_income_ttm, 
+    operating_income_e22, operating_income_e23, operating_income_e24, gmt_create, gmt_modified
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from business_growth
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from business_growth
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.fuyin.boot.mgb.entity.BusinessGrowthDO">
+    insert into business_growth (id, detail_url, code, 
+      name, basic_eps_year3, basic_eps_a21, 
+      basic_eps_ttm, basic_eps_e22, basic_eps_e23, 
+      basic_eps_e24, operating_income_year3, operating_income_a21, 
+      operating_income_ttm, operating_income_e22, operating_income_e23, 
+      operating_income_e24, gmt_create, gmt_modified
+      )
+    values (#{id,jdbcType=BIGINT}, #{detailUrl,jdbcType=VARCHAR}, #{code,jdbcType=VARCHAR}, 
+      #{name,jdbcType=VARCHAR}, #{basicEpsYear3,jdbcType=DOUBLE}, #{basicEpsA21,jdbcType=DOUBLE}, 
+      #{basicEpsTtm,jdbcType=DOUBLE}, #{basicEpsE22,jdbcType=DOUBLE}, #{basicEpsE23,jdbcType=DOUBLE}, 
+      #{basicEpsE24,jdbcType=DOUBLE}, #{operatingIncomeYear3,jdbcType=DOUBLE}, #{operatingIncomeA21,jdbcType=DOUBLE}, 
+      #{operatingIncomeTtm,jdbcType=DOUBLE}, #{operatingIncomeE22,jdbcType=DOUBLE}, #{operatingIncomeE23,jdbcType=DOUBLE}, 
+      #{operatingIncomeE24,jdbcType=DOUBLE}, #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.fuyin.boot.mgb.entity.BusinessGrowthDO">
+    insert into business_growth
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="detailUrl != null">
+        detail_url,
+      </if>
+      <if test="code != null">
+        code,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="basicEpsYear3 != null">
+        basic_eps_year3,
+      </if>
+      <if test="basicEpsA21 != null">
+        basic_eps_a21,
+      </if>
+      <if test="basicEpsTtm != null">
+        basic_eps_ttm,
+      </if>
+      <if test="basicEpsE22 != null">
+        basic_eps_e22,
+      </if>
+      <if test="basicEpsE23 != null">
+        basic_eps_e23,
+      </if>
+      <if test="basicEpsE24 != null">
+        basic_eps_e24,
+      </if>
+      <if test="operatingIncomeYear3 != null">
+        operating_income_year3,
+      </if>
+      <if test="operatingIncomeA21 != null">
+        operating_income_a21,
+      </if>
+      <if test="operatingIncomeTtm != null">
+        operating_income_ttm,
+      </if>
+      <if test="operatingIncomeE22 != null">
+        operating_income_e22,
+      </if>
+      <if test="operatingIncomeE23 != null">
+        operating_income_e23,
+      </if>
+      <if test="operatingIncomeE24 != null">
+        operating_income_e24,
+      </if>
+      <if test="gmtCreate != null">
+        gmt_create,
+      </if>
+      <if test="gmtModified != null">
+        gmt_modified,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="detailUrl != null">
+        #{detailUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="basicEpsYear3 != null">
+        #{basicEpsYear3,jdbcType=DOUBLE},
+      </if>
+      <if test="basicEpsA21 != null">
+        #{basicEpsA21,jdbcType=DOUBLE},
+      </if>
+      <if test="basicEpsTtm != null">
+        #{basicEpsTtm,jdbcType=DOUBLE},
+      </if>
+      <if test="basicEpsE22 != null">
+        #{basicEpsE22,jdbcType=DOUBLE},
+      </if>
+      <if test="basicEpsE23 != null">
+        #{basicEpsE23,jdbcType=DOUBLE},
+      </if>
+      <if test="basicEpsE24 != null">
+        #{basicEpsE24,jdbcType=DOUBLE},
+      </if>
+      <if test="operatingIncomeYear3 != null">
+        #{operatingIncomeYear3,jdbcType=DOUBLE},
+      </if>
+      <if test="operatingIncomeA21 != null">
+        #{operatingIncomeA21,jdbcType=DOUBLE},
+      </if>
+      <if test="operatingIncomeTtm != null">
+        #{operatingIncomeTtm,jdbcType=DOUBLE},
+      </if>
+      <if test="operatingIncomeE22 != null">
+        #{operatingIncomeE22,jdbcType=DOUBLE},
+      </if>
+      <if test="operatingIncomeE23 != null">
+        #{operatingIncomeE23,jdbcType=DOUBLE},
+      </if>
+      <if test="operatingIncomeE24 != null">
+        #{operatingIncomeE24,jdbcType=DOUBLE},
+      </if>
+      <if test="gmtCreate != null">
+        #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null">
+        #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fuyin.boot.mgb.entity.BusinessGrowthDO">
+    update business_growth
+    <set>
+      <if test="detailUrl != null">
+        detail_url = #{detailUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="basicEpsYear3 != null">
+        basic_eps_year3 = #{basicEpsYear3,jdbcType=DOUBLE},
+      </if>
+      <if test="basicEpsA21 != null">
+        basic_eps_a21 = #{basicEpsA21,jdbcType=DOUBLE},
+      </if>
+      <if test="basicEpsTtm != null">
+        basic_eps_ttm = #{basicEpsTtm,jdbcType=DOUBLE},
+      </if>
+      <if test="basicEpsE22 != null">
+        basic_eps_e22 = #{basicEpsE22,jdbcType=DOUBLE},
+      </if>
+      <if test="basicEpsE23 != null">
+        basic_eps_e23 = #{basicEpsE23,jdbcType=DOUBLE},
+      </if>
+      <if test="basicEpsE24 != null">
+        basic_eps_e24 = #{basicEpsE24,jdbcType=DOUBLE},
+      </if>
+      <if test="operatingIncomeYear3 != null">
+        operating_income_year3 = #{operatingIncomeYear3,jdbcType=DOUBLE},
+      </if>
+      <if test="operatingIncomeA21 != null">
+        operating_income_a21 = #{operatingIncomeA21,jdbcType=DOUBLE},
+      </if>
+      <if test="operatingIncomeTtm != null">
+        operating_income_ttm = #{operatingIncomeTtm,jdbcType=DOUBLE},
+      </if>
+      <if test="operatingIncomeE22 != null">
+        operating_income_e22 = #{operatingIncomeE22,jdbcType=DOUBLE},
+      </if>
+      <if test="operatingIncomeE23 != null">
+        operating_income_e23 = #{operatingIncomeE23,jdbcType=DOUBLE},
+      </if>
+      <if test="operatingIncomeE24 != null">
+        operating_income_e24 = #{operatingIncomeE24,jdbcType=DOUBLE},
+      </if>
+      <if test="gmtCreate != null">
+        gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null">
+        gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fuyin.boot.mgb.entity.BusinessGrowthDO">
+    update business_growth
+    set detail_url = #{detailUrl,jdbcType=VARCHAR},
+      code = #{code,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      basic_eps_year3 = #{basicEpsYear3,jdbcType=DOUBLE},
+      basic_eps_a21 = #{basicEpsA21,jdbcType=DOUBLE},
+      basic_eps_ttm = #{basicEpsTtm,jdbcType=DOUBLE},
+      basic_eps_e22 = #{basicEpsE22,jdbcType=DOUBLE},
+      basic_eps_e23 = #{basicEpsE23,jdbcType=DOUBLE},
+      basic_eps_e24 = #{basicEpsE24,jdbcType=DOUBLE},
+      operating_income_year3 = #{operatingIncomeYear3,jdbcType=DOUBLE},
+      operating_income_a21 = #{operatingIncomeA21,jdbcType=DOUBLE},
+      operating_income_ttm = #{operatingIncomeTtm,jdbcType=DOUBLE},
+      operating_income_e22 = #{operatingIncomeE22,jdbcType=DOUBLE},
+      operating_income_e23 = #{operatingIncomeE23,jdbcType=DOUBLE},
+      operating_income_e24 = #{operatingIncomeE24,jdbcType=DOUBLE},
+      gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      gmt_modified = #{gmtModified,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

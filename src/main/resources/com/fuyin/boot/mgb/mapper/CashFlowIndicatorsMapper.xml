@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fuyin.boot.mgb.mapper.CashFlowIndicatorsMapper">
+  <resultMap id="BaseResultMap" type="com.fuyin.boot.mgb.entity.CashFlowIndicatorsDO">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="index_name" jdbcType="VARCHAR" property="indexName" />
+    <result column="calculation_formula" jdbcType="VARCHAR" property="calculationFormula" />
+    <result column="standard_value" jdbcType="VARCHAR" property="standardValue" />
+    <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+    <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, index_name, calculation_formula, standard_value, gmt_create, gmt_modified
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from cash_flow_indicators
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from cash_flow_indicators
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.fuyin.boot.mgb.entity.CashFlowIndicatorsDO">
+    insert into cash_flow_indicators (id, index_name, calculation_formula, 
+      standard_value, gmt_create, gmt_modified
+      )
+    values (#{id,jdbcType=BIGINT}, #{indexName,jdbcType=VARCHAR}, #{calculationFormula,jdbcType=VARCHAR}, 
+      #{standardValue,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.fuyin.boot.mgb.entity.CashFlowIndicatorsDO">
+    insert into cash_flow_indicators
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="indexName != null">
+        index_name,
+      </if>
+      <if test="calculationFormula != null">
+        calculation_formula,
+      </if>
+      <if test="standardValue != null">
+        standard_value,
+      </if>
+      <if test="gmtCreate != null">
+        gmt_create,
+      </if>
+      <if test="gmtModified != null">
+        gmt_modified,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="indexName != null">
+        #{indexName,jdbcType=VARCHAR},
+      </if>
+      <if test="calculationFormula != null">
+        #{calculationFormula,jdbcType=VARCHAR},
+      </if>
+      <if test="standardValue != null">
+        #{standardValue,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtCreate != null">
+        #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null">
+        #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fuyin.boot.mgb.entity.CashFlowIndicatorsDO">
+    update cash_flow_indicators
+    <set>
+      <if test="indexName != null">
+        index_name = #{indexName,jdbcType=VARCHAR},
+      </if>
+      <if test="calculationFormula != null">
+        calculation_formula = #{calculationFormula,jdbcType=VARCHAR},
+      </if>
+      <if test="standardValue != null">
+        standard_value = #{standardValue,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtCreate != null">
+        gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null">
+        gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fuyin.boot.mgb.entity.CashFlowIndicatorsDO">
+    update cash_flow_indicators
+    set index_name = #{indexName,jdbcType=VARCHAR},
+      calculation_formula = #{calculationFormula,jdbcType=VARCHAR},
+      standard_value = #{standardValue,jdbcType=VARCHAR},
+      gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      gmt_modified = #{gmtModified,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

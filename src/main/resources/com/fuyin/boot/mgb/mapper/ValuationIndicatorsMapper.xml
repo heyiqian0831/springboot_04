@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fuyin.boot.mgb.mapper.ValuationIndicatorsMapper">
+  <resultMap id="BaseResultMap" type="com.fuyin.boot.mgb.entity.ValuationIndicatorsDO">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="modular" jdbcType="VARCHAR" property="modular" />
+    <result column="index" jdbcType="VARCHAR" property="index" />
+    <result column="scoring_criteria" jdbcType="VARCHAR" property="scoringCriteria" />
+    <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+    <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, modular, index, scoring_criteria, gmt_create, gmt_modified
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from valuation_indicators
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from valuation_indicators
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.fuyin.boot.mgb.entity.ValuationIndicatorsDO">
+    insert into valuation_indicators (id, modular, index, 
+      scoring_criteria, gmt_create, gmt_modified
+      )
+    values (#{id,jdbcType=BIGINT}, #{modular,jdbcType=VARCHAR}, #{index,jdbcType=VARCHAR}, 
+      #{scoringCriteria,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.fuyin.boot.mgb.entity.ValuationIndicatorsDO">
+    insert into valuation_indicators
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="modular != null">
+        modular,
+      </if>
+      <if test="index != null">
+        index,
+      </if>
+      <if test="scoringCriteria != null">
+        scoring_criteria,
+      </if>
+      <if test="gmtCreate != null">
+        gmt_create,
+      </if>
+      <if test="gmtModified != null">
+        gmt_modified,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="modular != null">
+        #{modular,jdbcType=VARCHAR},
+      </if>
+      <if test="index != null">
+        #{index,jdbcType=VARCHAR},
+      </if>
+      <if test="scoringCriteria != null">
+        #{scoringCriteria,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtCreate != null">
+        #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null">
+        #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fuyin.boot.mgb.entity.ValuationIndicatorsDO">
+    update valuation_indicators
+    <set>
+      <if test="modular != null">
+        modular = #{modular,jdbcType=VARCHAR},
+      </if>
+      <if test="index != null">
+        index = #{index,jdbcType=VARCHAR},
+      </if>
+      <if test="scoringCriteria != null">
+        scoring_criteria = #{scoringCriteria,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtCreate != null">
+        gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null">
+        gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fuyin.boot.mgb.entity.ValuationIndicatorsDO">
+    update valuation_indicators
+    set modular = #{modular,jdbcType=VARCHAR},
+      index = #{index,jdbcType=VARCHAR},
+      scoring_criteria = #{scoringCriteria,jdbcType=VARCHAR},
+      gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      gmt_modified = #{gmtModified,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

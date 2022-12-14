@@ -1,0 +1,67 @@
+{
+  "code": 200,
+  "msg": "操作成功",
+  "data": {
+    "debtCapacity": [
+      {
+        "index": "quickRatio",
+        "score": 1,
+        "value": 0.84,
+        "result": "1分(较差)",
+        "cdo_id": 20
+      },
+      {
+        "index": "debtAssetRatio",
+        "score": 1,
+        "value": 67.1,
+        "result": "1分(不合理,负债过高)",
+        "cdo_id": 20
+      },
+      {
+        "index": "currentRatio",
+        "score": 1,
+        "value": 1.31,
+        "result": "1分(较差)",
+        "cdo_id": 20
+      }
+    ],
+    "enterpriceParam": {
+      "name": "中国长城",
+      "enterpriseCode": "440882199806207213",
+      "reason": "这里填写债务重组原因",
+      "type": "债务重组类型：债转股"
+    },
+    "debtCashFlow": [],
+    "debtProfitability": [
+      {
+        "index": "grossProfitRatio",
+        "score": 3,
+        "value": 20.9,
+        "result": "3分(较好)",
+        "pdo_id": 18
+      },
+      {
+        "index": "returnOnInvestedCapital",
+        "score": 3,
+        "value": 0.28,
+        "result": "3分(较好)",
+        "pdo_id": 18
+      },
+      {
+        "index": "netInterestRate",
+        "score": 3,
+        "value": 3.84,
+        "result": "3分(较好)",
+        "pdo_id": 18
+      },
+      {
+        "index": "returnOnTotalAssets",
+        "score": 3,
+        "value": 2.27,
+        "result": "3分(较好)",
+        "pdo_id": 18
+      }
+    ],
+    "debtDesc": "中国长城债务诊断总分为：15分，负债能力得分为：3分，盈利能力得分为：12分，现金流得分为：0分。"
+  }
+}
